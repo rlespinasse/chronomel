@@ -9,7 +9,7 @@ Lille** (MEL). Naviguez dans le temps de **1930 à 2025** et comparez deux
 millésimes côte à côte grâce à un rideau interactif.
 
 > Carte construite avec [leaflet-atlas](https://github.com/rlespinasse/leaflet-atlas),
-> publiée sur GitHub Pages — <https://rlespinasse.github.io/chronomel/>.
+> publiée sur GitHub Pages — <https://www.romainlespinasse.dev/chronomel/>.
 
 ## Fonctionnalités
 
@@ -93,7 +93,7 @@ Le déploiement est automatique à chaque push sur `main`
 (`.github/workflows/deploy.yml`). Une seule action manuelle est requise, une
 fois : dans **Settings → Pages** du dépôt, choisir la source **« GitHub
 Actions »**. Le site est ensuite publié sur
-<https://rlespinasse.github.io/chronomel/>.
+<https://www.romainlespinasse.dev/chronomel/>.
 
 ---
 
