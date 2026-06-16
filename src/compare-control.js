@@ -2,7 +2,7 @@ import L from 'leaflet';
 import { MILLESIMES, libelleCourt, parId } from './ortho-millesimes.js';
 
 // Contrôle « comparateur » : deux listes déroulantes (gauche / droite) qui
-// pilotent le rideau leaflet-side-by-side. Tous les millésimes (principaux et
+// pilotent le rideau de comparaison (SwipeCurtain). Tous les millésimes (principaux et
 // variantes) sont sélectionnables de chaque côté.
 //
 // Usage : createCompareControl({ leftId, rightId, onChange: (side, millesime) => {} })

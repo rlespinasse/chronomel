@@ -17,7 +17,7 @@ millésimes côte à côte grâce à un rideau interactif.
 - **Variantes par année** : infrarouge colorisé (IRC), stéréoscopique, sans
   dévers, périmètre CCPC… proposées quand elles existent.
 - **Comparateur à rideau** : confrontez deux millésimes avec un séparateur
-  glissant (basé sur `leaflet-side-by-side`).
+  glissant (comparateur « maison », sans dépendance).
 - **Repère vectoriel** : contour des 95 communes de la MEL, avec recherche par
   nom / code INSEE et panneau de détail (population, superficie, densité…).
 - **Persistance** : mode et millésimes sélectionnés conservés entre les visites.
@@ -145,7 +145,7 @@ sous **Licence Ouverte**.
 
 - [Vite](https://vite.dev/) — outillage et build statique.
 - [Leaflet](https://leafletjs.com/) + [leaflet-atlas](https://github.com/rlespinasse/leaflet-atlas) — carte config-driven.
-- [leaflet-side-by-side](https://github.com/digidem/leaflet-side-by-side) — comparateur à rideau.
+- Comparateur à rideau : contrôle « maison » sans dépendance (`src/swipe-control.js`).
 
 ---
 

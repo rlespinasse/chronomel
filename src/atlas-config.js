@@ -143,9 +143,9 @@ export const config = {
         </p>
         <h3>Cartographie</h3>
         <p>
-          Réalisée avec <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>,
-          <a href="https://github.com/rlespinasse/leaflet-atlas" target="_blank" rel="noopener">leaflet-atlas</a>
-          et leaflet-side-by-side.
+          Réalisée avec <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>
+          et <a href="https://github.com/rlespinasse/leaflet-atlas" target="_blank" rel="noopener">leaflet-atlas</a>
+          (comparateur à rideau intégré).
         </p>`,
     },
     {

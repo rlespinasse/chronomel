@@ -1,15 +1,15 @@
 import L from 'leaflet';
-import 'leaflet-side-by-side';
 
 import { createOrthoWmsLayer } from './wms.js';
 import { principaux, parId } from './ortho-millesimes.js';
 import { createTimelineControl } from './timeline-control.js';
 import { createCompareControl } from './compare-control.js';
+import { SwipeCurtain } from './swipe-control.js';
 
 // Orchestrateur « chrono » branché dans le hook onReady de leaflet-atlas.
 // Gère deux modes :
 //   - timeline : une orthophoto affichée, pilotée par le curseur d'années ;
-//   - compare  : deux orthophotos séparées par un rideau (leaflet-side-by-side).
+//   - compare  : deux orthophotos séparées par un rideau (SwipeCurtain maison).
 // L'état (mode + millésimes sélectionnés) est persisté dans localStorage.
 
 const STORAGE_KEY = 'chronomel:etat';
@@ -63,7 +63,7 @@ export function initChrono(app) {
 
   function clearCompare() {
     if (sbs) {
-      map.removeControl(sbs);
+      sbs.remove();
       sbs = null;
     }
     [state.leftId, state.rightId].forEach((id) => {
@@ -80,12 +80,16 @@ export function initChrono(app) {
     saveState(state);
   }
 
+  function currentPair() {
+    return [layerFor(state.leftId), layerFor(state.rightId)];
+  }
+
   function showCompare() {
-    const left = layerFor(state.leftId);
-    const right = layerFor(state.rightId);
+    const [left, right] = currentPair();
     left.addTo(map);
     right.addTo(map);
-    sbs = L.control.sideBySide(left, right).addTo(map);
+    sbs = new SwipeCurtain(map);
+    sbs.setLayers(left, right);
     saveState(state);
   }
 
@@ -100,10 +104,10 @@ export function initChrono(app) {
       if (old && map.hasLayer(old)) map.removeLayer(old);
     }
 
-    const layer = layerFor(millesime.id);
-    layer.addTo(map);
-    if (side === 'left') sbs.setLeftLayers(layer);
-    else sbs.setRightLayers(layer);
+    const [left, right] = currentPair();
+    left.addTo(map);
+    right.addTo(map);
+    if (sbs) sbs.setLayers(left, right);
     saveState(state);
   }
 
