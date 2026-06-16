@@ -1,0 +1,42 @@
+name: Mise à jour des données communes
+
+on:
+  schedule:
+    # Le 1er de chaque mois à 06:00 UTC
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Installation de Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Installation des dépendances
+        run: npm ci
+
+      - name: Téléchargement du GeoJSON des communes
+        run: npm run refresh-data
+
+      - name: Ouverture d'une pull request si changement
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          commit-message: 'chore(data): mise à jour des communes de la MEL'
+          title: 'chore(data): mise à jour des communes de la MEL'
+          body: |
+            Mise à jour automatique du contour des communes depuis l'API OGC Features
+            de la Métropole Européenne de Lille.
+          branch: data/refresh-communes
+          delete-branch: true
+          add-paths: public/data/communes-mel.geojson

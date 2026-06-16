@@ -1,0 +1,25 @@
+{
+  "name": "chronomel",
+  "version": "0.0.0",
+  "description": "Visionneuse temporelle des orthophotographies de la Métropole Européenne de Lille",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "refresh-data": "node scripts/refresh-data.mjs"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "leaflet-atlas": "^0.2.0",
+    "leaflet-side-by-side": "^2.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "vite": "^6.0.0"
+  }
+}

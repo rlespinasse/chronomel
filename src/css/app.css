@@ -1,0 +1,192 @@
+:root {
+  --chrono-bg: rgba(20, 24, 31, 0.88);
+  --chrono-fg: #f4f6f8;
+  --chrono-accent: #4ea1ff;
+  --chrono-muted: #aab4c0;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+}
+
+/* Panneaux de contrôle « chrono » (timeline / comparateur / bascule) */
+.chrono-panel {
+  background: var(--chrono-bg);
+  color: var(--chrono-fg);
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  backdrop-filter: blur(6px);
+}
+
+.chrono-timeline,
+.chrono-compare {
+  width: min(420px, 80vw);
+}
+
+.chrono-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.chrono-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: var(--chrono-muted);
+}
+
+.chrono-year {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.chrono-detail {
+  color: var(--chrono-muted);
+  font-size: 12px;
+}
+
+.chrono-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chrono-slider {
+  flex: 1;
+  accent-color: var(--chrono-accent);
+}
+
+.chrono-step {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--chrono-fg);
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.chrono-step:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.chrono-variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chrono-variants.is-empty {
+  display: none;
+}
+
+.chrono-chip {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--chrono-fg);
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+.chrono-chip.is-active {
+  background: var(--chrono-accent);
+  border-color: var(--chrono-accent);
+  color: #06203d;
+  font-weight: 600;
+}
+
+/* Comparateur */
+.cmp-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.cmp-side {
+  width: 56px;
+  font-weight: 600;
+}
+
+.cmp-side--left {
+  color: var(--chrono-accent);
+}
+
+.cmp-side--right {
+  color: #ffd166;
+}
+
+.cmp-select {
+  flex: 1;
+  border-radius: 6px;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--chrono-fg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cmp-select option {
+  color: #111;
+}
+
+/* Bascule de mode */
+.chrono-modes {
+  display: flex;
+  padding: 4px;
+  gap: 4px;
+}
+
+.chrono-mode {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--chrono-fg);
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.chrono-mode.is-active {
+  background: var(--chrono-accent);
+  color: #06203d;
+  font-weight: 600;
+}
+
+/* Panneau de détail des communes */
+.commune-detail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  margin: 0;
+}
+
+.commune-detail dt {
+  color: var(--chrono-muted, #667);
+  font-size: 12px;
+}
+
+.commune-detail dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail-source {
+  font-size: 12px;
+  margin-top: 12px;
+}
