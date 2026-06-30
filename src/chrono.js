@@ -6,6 +6,7 @@ import { createTimelineControl } from './timeline-control.js';
 import { createCompareControl } from './compare-control.js';
 import { setMillesimeAffiche, styleForFeature } from './bati-remarquable.js';
 import { SwipeCurtain } from './swipe-control.js';
+import { trackEvent } from './analytics.js';
 
 // Orchestrateur « chrono » branché dans le hook onReady de leaflet-atlas.
 // Gère deux modes :
@@ -122,6 +123,7 @@ export function initChrono(app) {
   }
 
   function setCompareLayer(side, millesime) {
+    trackEvent('event/compare', `Comparateur ${side === 'left' ? 'gauche' : 'droite'} : ${millesime.id}`);
     const key = side === 'left' ? 'leftId' : 'rightId';
     const oldId = state[key];
     const otherId = side === 'left' ? state.rightId : state.leftId;
@@ -140,8 +142,20 @@ export function initChrono(app) {
     saveState(state);
   }
 
+  // Le curseur de la frise émet `onSelect` en continu pendant le glissement :
+  // on temporise donc la mesure pour ne compter que le millésime sur lequel
+  // l'utilisateur s'arrête (et non chaque année survolée).
+  let millesimeTimer = null;
+  function trackMillesime(m) {
+    clearTimeout(millesimeTimer);
+    millesimeTimer = setTimeout(() => trackEvent('event/millesime', `Millésime ${m.id}`), 600);
+  }
+
   const timeline = createTimelineControl({
-    onSelect: (m) => showSingle(m.id),
+    onSelect: (m) => {
+      showSingle(m.id);
+      trackMillesime(m);
+    },
   });
 
   const compare = createCompareControl({
@@ -163,7 +177,7 @@ export function initChrono(app) {
       `;
       c.querySelectorAll('.chrono-mode').forEach((btn) => {
         toggleButtons[btn.dataset.mode] = btn;
-        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+        btn.addEventListener('click', () => setMode(btn.dataset.mode, true));
       });
       return c;
     },
@@ -175,7 +189,9 @@ export function initChrono(app) {
     });
   }
 
-  function setMode(mode) {
+  // `track` n'est vrai que pour les bascules déclenchées par l'utilisateur
+  // (bouton, raccourci « m ») — pas pour la restauration du mode au chargement.
+  function setMode(mode, track = false) {
     state.mode = mode === 'compare' ? 'compare' : 'timeline';
     if (state.mode === 'timeline') {
       clearCompare();
@@ -192,6 +208,7 @@ export function initChrono(app) {
     }
     refreshToggleUI();
     saveState(state);
+    if (track) trackEvent(`event/mode/${state.mode}`, state.mode === 'compare' ? 'Mode comparateur' : 'Mode frise');
   }
 
   new ModeToggle().addTo(map);
@@ -219,7 +236,7 @@ export function initChrono(app) {
 
     // Bascule de mode : disponible dans les deux modes.
     if (e.key === 'm' || e.key === 'M') {
-      setMode(state.mode === 'timeline' ? 'compare' : 'timeline');
+      setMode(state.mode === 'timeline' ? 'compare' : 'timeline', true);
       e.preventDefault();
       return;
     }

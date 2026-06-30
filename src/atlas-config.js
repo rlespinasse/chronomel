@@ -1,5 +1,6 @@
 import { initChrono } from './chrono.js';
 import { usageMeta, getMillesimeAffiche } from './bati-remarquable.js';
+import { analyticsConfig } from './analytics.js';
 
 const nf = new Intl.NumberFormat('fr-FR');
 
@@ -56,6 +57,12 @@ export const config = {
     },
   },
   defaultBaseLayer: 'Plan OpenStreetMap',
+
+  // Mesure d'audience GoatCounter (intégration native de leaflet-atlas) : émet
+  // les événements des contrôles natifs (couche activée, recherche, zoom,
+  // panneau de détail, pages légales…), tous préfixés par basePath. Voir
+  // analytics.js pour la config partagée et le préfixe /chronomel.
+  analytics: analyticsConfig,
 
   layerGroups: [
     {
@@ -361,8 +368,13 @@ export const config = {
       content: `
         <h2>Confidentialité</h2>
         <p>
-          ChronoMEL est un site statique qui ne collecte aucune donnée personnelle,
-          n'utilise aucun cookie et n'embarque aucun outil de mesure d'audience.
+          ChronoMEL est un site statique qui mesure son audience avec
+          <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a>,
+          un outil respectueux de la vie privée&nbsp;: aucune donnée personnelle n'est
+          collectée, aucun cookie n'est déposé et votre adresse IP n'est pas conservée.
+          Les statistiques recueillies (vues de page, événements d'usage, navigateur,
+          provenance) sont anonymes et agrégées. Les requêtes émises depuis un poste
+          local de développement ne sont pas comptabilisées.
         </p>
         <p>
           Vos préférences d'affichage (mode et millésimes sélectionnés) sont enregistrées
