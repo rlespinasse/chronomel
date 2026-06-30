@@ -4,6 +4,7 @@ import { createOrthoWmsLayer } from './wms.js';
 import { principaux, parId } from './ortho-millesimes.js';
 import { createTimelineControl } from './timeline-control.js';
 import { createCompareControl } from './compare-control.js';
+import { setMillesimeAffiche, styleForFeature } from './bati-remarquable.js';
 import { SwipeCurtain } from './swipe-control.js';
 
 // Orchestrateur « chrono » branché dans le hook onReady de leaflet-atlas.
@@ -51,6 +52,31 @@ export function initChrono(app) {
     return cache.get(id);
   };
 
+  // Couche optionnelle « bâti remarquable daté » (BD TOPO) : déclarée comme
+  // couche leaflet-atlas (atlas-config.js → layerGroups/styles/tooltips/détail),
+  // mais restylée dynamiquement ici selon le millésime affiché — un bâtiment
+  // construit après l'année courante apparaît « projeté », sinon « présent ».
+  // En comparateur, on l'aligne sur le millésime de gauche (le plus ancien), où
+  // l'état « projeté » est le plus parlant.
+  //
+  // onReady (qui appelle initChrono) se déclenche une fois toutes les couches
+  // chargées : l'instance Leaflet est donc disponible via getAllLayerDefs().
+  const batiLayer = () =>
+    app.getAllLayerDefs().find((d) => d.id === 'bati')?._leafletLayer ?? null;
+
+  const anneeFor = (id) => parId(id)?.annee ?? null;
+
+  function syncBati() {
+    const annee = anneeFor(state.mode === 'compare' ? state.leftId : state.currentId);
+    if (annee == null) return;
+    setMillesimeAffiche(annee);
+    const layer = batiLayer();
+    if (!layer) return;
+    layer.eachLayer((m) => {
+      if (m.feature) m.setStyle(styleForFeature(m.feature, annee));
+    });
+  }
+
   let single = null;
   let sbs = null;
 
@@ -77,6 +103,7 @@ export function initChrono(app) {
     clearSingle();
     single = layerFor(id);
     single.addTo(map);
+    syncBati();
     saveState(state);
   }
 
@@ -90,6 +117,7 @@ export function initChrono(app) {
     right.addTo(map);
     sbs = new SwipeCurtain(map);
     sbs.setLayers(left, right);
+    syncBati();
     saveState(state);
   }
 
@@ -108,6 +136,7 @@ export function initChrono(app) {
     left.addTo(map);
     right.addTo(map);
     if (sbs) sbs.setLayers(left, right);
+    syncBati();
     saveState(state);
   }
 

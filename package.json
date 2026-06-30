@@ -9,7 +9,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "refresh-data": "node scripts/refresh-data.mjs"
+    "refresh-data": "node scripts/refresh-data.mjs",
+    "refresh-bati": "node scripts/refresh-bati-remarquable.mjs",
+    "refresh-transport": "node scripts/refresh-transport.mjs",
+    "refresh-hydro": "node scripts/refresh-hydro.mjs",
+    "refresh-vegetation": "node scripts/refresh-vegetation.mjs",
+    "refresh-equipements": "node scripts/refresh-equipements.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

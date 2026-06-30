@@ -1,4 +1,4 @@
-name: Mise à jour des données communes
+name: Mise à jour des données
 
 on:
   schedule:
@@ -29,14 +29,34 @@ jobs:
       - name: Téléchargement du GeoJSON des communes
         run: npm run refresh-data
 
+      - name: Téléchargement du bâti remarquable (BD TOPO)
+        run: npm run refresh-bati
+
+      - name: Téléchargement des calques de contexte (BD TOPO)
+        run: |
+          npm run refresh-transport
+          npm run refresh-hydro
+          npm run refresh-vegetation
+          npm run refresh-equipements
+
       - name: Ouverture d'une pull request si changement
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          commit-message: 'chore(data): mise à jour des communes de la MEL'
-          title: 'chore(data): mise à jour des communes de la MEL'
+          commit-message: 'chore(data): mise à jour des données MEL'
+          title: 'chore(data): mise à jour des données MEL'
           body: |
-            Mise à jour automatique du contour des communes depuis l'API OGC Features
-            de la Métropole Européenne de Lille.
-          branch: data/refresh-communes
+            Mise à jour automatique des données :
+            - contour des communes (API OGC Features de la MEL) ;
+            - bâti remarquable daté (BD TOPO® © IGN, via la Géoplateforme) ;
+            - calques de contexte : réseau ferré, hydrographie, espaces verts,
+              équipements structurants (BD TOPO® © IGN, via la Géoplateforme).
+          branch: data/refresh
           delete-branch: true
-          add-paths: public/data/communes-mel.geojson
+          add-paths: |
+            public/data/communes-mel.geojson
+            public/data/bati-remarquable.geojson
+            public/data/transport.geojson
+            public/data/hydro-cours.geojson
+            public/data/hydro-surfaces.geojson
+            public/data/vegetation.geojson
+            public/data/equipements.geojson
