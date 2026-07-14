@@ -2,7 +2,7 @@
 // logique de projection temporelle. Le catalogue de points est statique
 // (public/data/bati-remarquable.geojson, régénéré par
 // scripts/refresh-bati-remarquable.mjs) et déclaré comme couche leaflet-atlas
-// (voir atlas-config.js) ; ce module décrit les usages, calcule l'état d'un
+// (voir config.ts) ; ce module décrit les usages, calcule l'état d'un
 // bâtiment vis-à-vis du millésime affiché et fournit le style correspondant.
 
 /** Usages BD TOPO retenus → libellé + couleur de marqueur. */
@@ -57,7 +57,7 @@ export function styleForFeature(feature, annee) {
 }
 
 // Millésime affiché courant, partagé avec le panneau de détail de leaflet-atlas
-// (atlas-config.js) qui ne reçoit que les propriétés d'une feature, pas l'année.
+// (config.ts) qui ne reçoit que les propriétés d'une feature, pas l'année.
 let millesimeAffiche = null;
 
 /** Mémorise le millésime affiché (appelé par l'orchestrateur chrono). */

@@ -8,7 +8,7 @@ import { createAnalytics } from 'leaflet-atlas';
 // GitHub Pages, cf. vite.config.js).
 //
 // Cette config est partagée entre deux émetteurs d'événements :
-//   - leaflet-atlas, via `config.analytics` (atlas-config.js) : il émet seul les
+//   - leaflet-atlas, via `config.analytics` (config.ts) : il émet seul les
 //     événements natifs (couche activée, recherche, zoom, panneau, légal…) ;
 //   - les contrôles propres à ChronoMEL (bascule de mode, millésime,
 //     comparateur), via `trackEvent` ci-dessous.

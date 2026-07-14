@@ -54,7 +54,7 @@ export function initChrono(app) {
   };
 
   // Couche optionnelle « bâti remarquable daté » (BD TOPO) : déclarée comme
-  // couche leaflet-atlas (atlas-config.js → layerGroups/styles/tooltips/détail),
+  // couche leaflet-atlas (config.ts → layerGroups/styles/tooltips/détail),
   // mais restylée dynamiquement ici selon le millésime affiché — un bâtiment
   // construit après l'année courante apparaît « projeté », sinon « présent ».
   // En comparateur, on l'aligne sur le millésime de gauche (le plus ancien), où
