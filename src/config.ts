@@ -31,7 +31,7 @@ export const config = {
     elementId: 'map',
     center: [50.63, 3.06],
     zoom: 11,
-    zoomSnap: 0.25,
+    zoomSnap: 1,
   },
 
   title: {
