@@ -20,9 +20,9 @@ const ORTHO_Z_INDEX = 250;
 export function createOrthoWmsLayer(millesime) {
   const layer = L.tileLayer.wms(WMS_BASE, {
     layers: millesime.layer,
-    format: 'image/jpeg',
+    format: 'image/png',
     version: '1.3.0',
-    transparent: false,
+    transparent: true,
     tiled: true,
     maxZoom: 21,
     attribution: ATTRIBUTION,
