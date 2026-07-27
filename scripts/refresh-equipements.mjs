@@ -15,13 +15,7 @@
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import {
-  fetchBdTopoFeatures,
-  bboxCql,
-  centroid,
-  round5,
-  writeCollection,
-} from './lib/bdtopo.mjs';
+import { fetchBdTopoFeatures, bboxCql, centroid, round5, writeCollection } from './lib/bdtopo.mjs';
 
 // Catégories BD TOPO retenues → catégorie ChronoMEL (sert au libellé / au style).
 const CATEGORIES = {
@@ -38,7 +32,7 @@ const OUTPUT = resolve(
   '..',
   'public',
   'data',
-  'equipements.geojson',
+  'equipements.geojson'
 );
 
 function buildCql() {

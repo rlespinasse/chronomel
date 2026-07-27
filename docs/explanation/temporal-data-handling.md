@@ -65,13 +65,13 @@ works.
 
 The orthophoto WMS layers (`src/ortho-millesimes.js`) are the visual
 backdrop that changes with the timeline, but they're not "temporal data"
-in the sense above — they're an *index of available imagery years*, not
+in the sense above — they're an _index of available imagery years_, not
 features with per-object dates. A millésime entry can be `principal`
 (the one reference orthophoto for that year, shown on the main timeline)
 or a variant of the same year (infrared, stereoscopic, without building
 lean correction, alternate coverage perimeter) — see
 `CATEGORIES` in `src/ortho-millesimes.js`. Only bâti remarquable reacts
-to *which* millésime is selected; the orthophoto itself is just swapped.
+to _which_ millésime is selected; the orthophoto itself is just swapped.
 
 ---
 

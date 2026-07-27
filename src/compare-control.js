@@ -12,7 +12,7 @@ function optionsHtml(selectedId) {
     .sort((a, b) => a.annee - b.annee || Number(b.principal) - Number(a.principal))
     .map(
       (m) =>
-        `<option value="${m.id}"${m.id === selectedId ? ' selected' : ''}>${libelleCourt(m)}</option>`,
+        `<option value="${m.id}"${m.id === selectedId ? ' selected' : ''}>${libelleCourt(m)}</option>`
     )
     .join('');
 }

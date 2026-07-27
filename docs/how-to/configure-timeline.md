@@ -15,8 +15,8 @@ Currently hardcoded to 1930-2025. To change:
 3. Update `minYear` and `maxYear`
 
 ```javascript
-const minYear = 1950;  // Start from 1950 instead
-const maxYear = 2024;  // End at 2024
+const minYear = 1950; // Start from 1950 instead
+const maxYear = 2024; // End at 2024
 ```
 
 ### Available Millesimes (Orthophoto Years)
@@ -24,9 +24,7 @@ const maxYear = 2024;  // End at 2024
 In `src/ortho-millesimes.js`, define which years have available imagery:
 
 ```javascript
-export const millesimes = [
-  1930, 1950, 1970, 2000, 2015, 2020, 2023, 2025
-];
+export const millesimes = [1930, 1950, 1970, 2000, 2015, 2020, 2023, 2025];
 ```
 
 Only these years will snap to when dragging the timeline.
@@ -83,21 +81,25 @@ Configure separately in `src/chrono.js` under the comparison mode setup.
 ## Troubleshooting
 
 **Timeline doesn't appear?**
+
 - Check `src/chrono.js` — ensure `initChrono()` is called from `src/config.ts`
 - Verify orthophoto WMS endpoint is accessible
 
 **Layers don't change when timeline moves?**
+
 - Ensure your layer has a sync function (like `syncBati`)
 - Check that features have year/date properties
 - Verify event listeners are attached
 
 **Years snap strangely?**
+
 - Check `millesimes` array in `src/ortho-millesimes.js`
 - Years should be in ascending order
 
 ---
 
 See also:
+
 - [Timeline Control Reference](../reference/cli-commands.md)
 - [Temporal Data Handling](../explanation/temporal-data-handling.md)
 - [Architecture: Temporal Projection](../explanation/architecture.md)

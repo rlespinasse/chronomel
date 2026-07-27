@@ -1,11 +1,5 @@
 import L from 'leaflet';
-import {
-  principaux,
-  pourAnnee,
-  parId,
-  libelleCourt,
-  CATEGORIES,
-} from './ortho-millesimes.js';
+import { principaux, pourAnnee, parId, libelleCourt, CATEGORIES } from './ortho-millesimes.js';
 
 // Contrôle « timeline » : un curseur chronologique pour choisir l'année
 // affichée, plus des pastilles de variantes (IRC, stéréo, sans dévers, CCPC)

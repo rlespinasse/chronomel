@@ -10,14 +10,14 @@ inspect datasets without leaving your editor.
 If you're working with Claude Code, the `datagouv` MCP server exposes
 tools to search and query data.gouv.fr directly:
 
-| Tool                       | Use it to…                                              |
-| --------------------------- | -------------------------------------------------------- |
-| `search_datasets`            | Find datasets by keyword (e.g. "bâti remarquable Lille") |
-| `get_dataset_info`           | Inspect a dataset's metadata, license, and resources     |
-| `list_dataset_resources`     | List the downloadable files/APIs for a dataset            |
-| `get_resource_info`          | Check a resource's format, size, and schema before fetching |
-| `query_resource_data`        | Query a tabular resource directly (when data.gouv.fr exposes a queryable API) |
-| `search_organizations`       | Find the official publisher (e.g. "Métropole Européenne de Lille") to trust its data over a mirror |
+| Tool                                                                            | Use it to…                                                                                                                                                                         |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `search_datasets`                                                               | Find datasets by keyword (e.g. "bâti remarquable Lille")                                                                                                                           |
+| `get_dataset_info`                                                              | Inspect a dataset's metadata, license, and resources                                                                                                                               |
+| `list_dataset_resources`                                                        | List the downloadable files/APIs for a dataset                                                                                                                                     |
+| `get_resource_info`                                                             | Check a resource's format, size, and schema before fetching                                                                                                                        |
+| `query_resource_data`                                                           | Query a tabular resource directly (when data.gouv.fr exposes a queryable API)                                                                                                      |
+| `search_organizations`                                                          | Find the official publisher (e.g. "Métropole Européenne de Lille") to trust its data over a mirror                                                                                 |
 | `search_dataservices` / `get_dataservice_info` / `get_dataservice_openapi_spec` | Find and inspect live APIs (as opposed to static file dumps) — this is how ChronoMEL's refresh scripts found the MEL GeoServer's OGC Features API and the IGN BD TOPO® WFS service |
 
 **Typical flow for a new layer:**

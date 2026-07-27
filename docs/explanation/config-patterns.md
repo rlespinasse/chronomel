@@ -31,7 +31,7 @@ this at the type level. Without it, leaflet-atlas assumes every layer is
 a polygon and computes its z-order (which pane it renders in) from
 feature area — which only makes sense for polygons. A pure point/line
 layer left out of `geometryTypes` falls into the default overlayPane
-(z-index 400), *under* polygon layers such as `communes` (whose fill is
+(z-index 400), _under_ polygon layers such as `communes` (whose fill is
 invisible but still clickable) — so its features become unclickable.
 Declaring the type correctly stacks points above lines above polygons,
 matching the intuitive "smaller/more precise things should be
@@ -66,7 +66,7 @@ evaluation until the map (and its dependent closures, like
 
 ## `onReady` as the extension point
 
-`config.ts` only declares *static* structure — layers, styles,
+`config.ts` only declares _static_ structure — layers, styles,
 tooltips. Everything dynamic (WMS orthophoto layers, the timeline,
 the comparator, keyboard shortcuts) is deliberately kept out of
 `config.ts` and instead wired through the single `onReady` hook:
@@ -84,7 +84,7 @@ while `chrono.js` holds all imperative logic.
 ## Shared analytics config, two emitters
 
 `analyticsConfig` (`src/analytics.js`) is passed to leaflet-atlas via
-`config.analytics` *and* reused directly by `trackEvent()`, which
+`config.analytics` _and_ reused directly by `trackEvent()`, which
 ChronoMEL's own controls (mode toggle, millésime selection, comparator)
 call explicitly. Both emitters share the same `basePath: '/chronomel/'`
 prefix so events from native leaflet-atlas UI and from ChronoMEL-specific

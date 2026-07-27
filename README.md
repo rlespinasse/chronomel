@@ -22,7 +22,7 @@ millésimes côte à côte grâce à un rideau interactif.
   nom / code INSEE et panneau de détail (population, superficie, densité…).
 - **Bâti remarquable daté** : couche optionnelle de ~1 200 bâtiments (religieux,
   sportifs, industriels et **patrimoine** — châteaux, forts, donjons, arcs)
-  issus de la BD TOPO, *projetés dans le temps* — un bâtiment apparaît « pas
+  issus de la BD TOPO, _projetés dans le temps_ — un bâtiment apparaît « pas
   encore construit » sur les millésimes antérieurs à son année de construction
   (certains châteaux remontent à 1402), puis « présent » ensuite.
 - **Calques de contexte** : repères statiques activables pour lire le territoire
@@ -37,7 +37,7 @@ millésimes côte à côte grâce à un rideau interactif.
 
 ---
 
-## Prise en main *(tutoriel — apprendre)*
+## Prise en main _(tutoriel — apprendre)_
 
 Dans ce tutoriel, nous allons lancer ChronoMEL en local et réaliser une première
 comparaison de millésimes.
@@ -73,7 +73,7 @@ suite — déployer, ajouter un millésime — est décrite dans les guides ci-d
 
 ---
 
-## Guides pratiques *(how-to — faire)*
+## Guides pratiques _(how-to — faire)_
 
 ### Rafraîchir les données
 
@@ -113,42 +113,42 @@ Actions »**. Le site est ensuite publié sur
 
 ---
 
-## Référence *(consulter)*
+## Référence _(consulter)_
 
 ### Commandes
 
-| Commande | `just` | Effet |
-| --- | --- | --- |
-| `npm install` | — | Installe les dépendances |
-| `npm run dev` | `just dev` | Serveur de développement (port 5173) |
-| `npm run lint` | `just lint` | Analyse ESLint |
-| `npm run build` | `just build` | Build de production dans `dist/` |
-| `npm run refresh-data` | `just refresh-data` | Met à jour le GeoJSON des communes |
-| `npm run refresh-bati` | — | Met à jour le GeoJSON du bâti remarquable (BD TOPO) |
-| `npm run refresh-transport` | — | Met à jour le réseau ferré (BD TOPO) |
-| `npm run refresh-hydro` | — | Met à jour l'hydrographie (BD TOPO) |
-| `npm run refresh-vegetation` | — | Met à jour les espaces verts (BD TOPO) |
-| `npm run refresh-equipements` | — | Met à jour les équipements structurants (BD TOPO) |
+| Commande                      | `just`              | Effet                                               |
+| ----------------------------- | ------------------- | --------------------------------------------------- |
+| `npm install`                 | —                   | Installe les dépendances                            |
+| `npm run dev`                 | `just dev`          | Serveur de développement (port 5173)                |
+| `npm run lint`                | `just lint`         | Analyse ESLint                                      |
+| `npm run build`               | `just build`        | Build de production dans `dist/`                    |
+| `npm run refresh-data`        | `just refresh-data` | Met à jour le GeoJSON des communes                  |
+| `npm run refresh-bati`        | —                   | Met à jour le GeoJSON du bâti remarquable (BD TOPO) |
+| `npm run refresh-transport`   | —                   | Met à jour le réseau ferré (BD TOPO)                |
+| `npm run refresh-hydro`       | —                   | Met à jour l'hydrographie (BD TOPO)                 |
+| `npm run refresh-vegetation`  | —                   | Met à jour les espaces verts (BD TOPO)              |
+| `npm run refresh-equipements` | —                   | Met à jour les équipements structurants (BD TOPO)   |
 
 ### Structure du code
 
-| Fichier | Rôle |
-| --- | --- |
-| `src/main.js` | Point d'entrée, instancie `MapApp`. |
-| `src/atlas-config.js` | Configuration leaflet-atlas (carte, communes, mentions légales, `onReady`). |
-| `src/ortho-millesimes.js` | Catalogue des couches WMS par millésime. |
-| `src/wms.js` | Fabrique de couches WMS Leaflet. |
-| `src/chrono.js` | Orchestrateur des modes frise / comparaison. |
-| `src/timeline-control.js` | Contrôle « frise chronologique ». |
-| `src/compare-control.js` | Contrôle « comparateur ». |
-| `src/bati-remarquable.js` | Métadonnées des usages, style et projection temporelle du bâti. |
-| `scripts/lib/bdtopo.mjs` | Utilitaire WFS BD TOPO partagé (pagination, emprise, simplification/arrondi, centroïde, aire). |
-| `scripts/refresh-data.mjs` | Téléchargement du contour des communes. |
-| `scripts/refresh-bati-remarquable.mjs` | Téléchargement du bâti remarquable et patrimonial (BD TOPO). |
-| `scripts/refresh-transport.mjs` | Téléchargement du réseau ferré (BD TOPO). |
-| `scripts/refresh-hydro.mjs` | Téléchargement de l'hydrographie (BD TOPO). |
-| `scripts/refresh-vegetation.mjs` | Téléchargement des espaces verts (BD TOPO). |
-| `scripts/refresh-equipements.mjs` | Téléchargement des équipements structurants (BD TOPO). |
+| Fichier                                | Rôle                                                                                           |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `src/main.js`                          | Point d'entrée, instancie `MapApp`.                                                            |
+| `src/atlas-config.js`                  | Configuration leaflet-atlas (carte, communes, mentions légales, `onReady`).                    |
+| `src/ortho-millesimes.js`              | Catalogue des couches WMS par millésime.                                                       |
+| `src/wms.js`                           | Fabrique de couches WMS Leaflet.                                                               |
+| `src/chrono.js`                        | Orchestrateur des modes frise / comparaison.                                                   |
+| `src/timeline-control.js`              | Contrôle « frise chronologique ».                                                              |
+| `src/compare-control.js`               | Contrôle « comparateur ».                                                                      |
+| `src/bati-remarquable.js`              | Métadonnées des usages, style et projection temporelle du bâti.                                |
+| `scripts/lib/bdtopo.mjs`               | Utilitaire WFS BD TOPO partagé (pagination, emprise, simplification/arrondi, centroïde, aire). |
+| `scripts/refresh-data.mjs`             | Téléchargement du contour des communes.                                                        |
+| `scripts/refresh-bati-remarquable.mjs` | Téléchargement du bâti remarquable et patrimonial (BD TOPO).                                   |
+| `scripts/refresh-transport.mjs`        | Téléchargement du réseau ferré (BD TOPO).                                                      |
+| `scripts/refresh-hydro.mjs`            | Téléchargement de l'hydrographie (BD TOPO).                                                    |
+| `scripts/refresh-vegetation.mjs`       | Téléchargement des espaces verts (BD TOPO).                                                    |
+| `scripts/refresh-equipements.mjs`      | Téléchargement des équipements structurants (BD TOPO).                                         |
 
 ### Millésimes disponibles
 
@@ -163,16 +163,16 @@ Toutes les données proviennent de la Métropole Européenne de Lille via
 [data.gouv.fr](https://www.data.gouv.fr/organizations/metropole-europeenne-de-lille/),
 sous **Licence Ouverte**.
 
-| Donnée | Format | Point d'accès |
-| --- | --- | --- |
-| Orthophotographies | WMS (atelier `Raster`) | `https://mel-geoserver.lillemetropole.fr/geoserver/Raster/wms` |
-| Communes | OGC API Features | `https://data.lillemetropole.fr/geoserver/ogc/features/v1/collections/mel_limite_administrative:mel_comm_orga/items` |
-| Bâti remarquable | WFS (`BDTOPO_V3:batiment`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN |
-| Réseau ferré | WFS (`BDTOPO_V3:troncon_de_voie_ferree`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN |
-| Hydrographie | WFS (`BDTOPO_V3:cours_d_eau`, `:surface_hydrographique`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN |
-| Espaces verts | WFS (`BDTOPO_V3:zone_de_vegetation`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN |
-| Équipements | WFS (`BDTOPO_V3:zone_d_activite_ou_d_interet`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN |
-| Fond de carte | Tuiles XYZ | OpenStreetMap (ODbL) |
+| Donnée             | Format                                                   | Point d'accès                                                                                                        |
+| ------------------ | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Orthophotographies | WMS (atelier `Raster`)                                   | `https://mel-geoserver.lillemetropole.fr/geoserver/Raster/wms`                                                       |
+| Communes           | OGC API Features                                         | `https://data.lillemetropole.fr/geoserver/ogc/features/v1/collections/mel_limite_administrative:mel_comm_orga/items` |
+| Bâti remarquable   | WFS (`BDTOPO_V3:batiment`)                               | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN                                                                     |
+| Réseau ferré       | WFS (`BDTOPO_V3:troncon_de_voie_ferree`)                 | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN                                                                     |
+| Hydrographie       | WFS (`BDTOPO_V3:cours_d_eau`, `:surface_hydrographique`) | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN                                                                     |
+| Espaces verts      | WFS (`BDTOPO_V3:zone_de_vegetation`)                     | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN                                                                     |
+| Équipements        | WFS (`BDTOPO_V3:zone_d_activite_ou_d_interet`)           | `https://data.geopf.fr/wfs/ows` — BD TOPO® © IGN                                                                     |
+| Fond de carte      | Tuiles XYZ                                               | OpenStreetMap (ODbL)                                                                                                 |
 
 ### Stack technique
 
@@ -182,7 +182,7 @@ sous **Licence Ouverte**.
 
 ---
 
-## Comprendre le projet *(explication — comprendre)*
+## Comprendre le projet _(explication — comprendre)_
 
 ### Carte config-driven et orthophotos en `onReady`
 
@@ -210,7 +210,7 @@ Le bâti remarquable réutilise au maximum leaflet-atlas : il est déclaré comm
 couche `layerGroups` ordinaire (avec son `style`, son `tooltips` et son
 `detailBuilders`), ce qui lui offre « gratuitement » la case d'activation, la
 pastille de légende, le tooltip et le panneau de détail — exactement comme les
-communes. La seule chose que le modèle *config-driven* ne sait pas faire est un
+communes. La seule chose que le modèle _config-driven_ ne sait pas faire est un
 style qui dépend d'un état externe : ici, le millésime affiché. On récupère donc
 l'instance Leaflet via `app.getAllLayerDefs()` et on la restyle à chaque
 changement de millésime (`syncBati` dans `src/chrono.js`), au lieu de
@@ -218,7 +218,7 @@ réimplémenter une couche et des contrôles à la main.
 
 ### Projection temporelle du bâti, mais pas de « disparu »
 
-Le bâti remarquable est *projeté* dans le temps grâce au champ `date_d_apparition`
+Le bâti remarquable est _projeté_ dans le temps grâce au champ `date_d_apparition`
 de la BD TOPO : on connaît l'année de construction, donc on peut afficher un
 bâtiment comme « pas encore là » sur les millésimes antérieurs. En revanche, la
 BD TOPO **ne porte aucune date de démolition** (les bâtiments disparus sont
@@ -237,11 +237,11 @@ repères permanents, et ne réagissent pas au millésime. C'est aussi pourquoi l
 « équipements » (écoles, hôpitaux, mairies, gares) sont une couche statique et
 non un enrichissement temporel du bâti — la BD TOPO ne les date pas, et leur
 classement (`usage_1` des bâtiments) ne distingue pas ces fonctions. Le seul
-enrichissement *temporel* possible était patrimonial : châteaux, forts, donjons
+enrichissement _temporel_ possible était patrimonial : châteaux, forts, donjons
 et arcs, qui eux portent une date (parfois très ancienne) et rejoignent donc la
 couche datée du bâti remarquable.
 
-Côté implémentation, ces couches sont 100 % *config-driven* (déclarées dans
+Côté implémentation, ces couches sont 100 % _config-driven_ (déclarées dans
 `src/atlas-config.js` via `layerGroups` / `styles` / `tooltips` / `detailBuilders`)
 et n'ont demandé **aucune** modification de l'orchestrateur `src/chrono.js` :
 elles n'ont pas d'état temporel à synchroniser. Pour rester légères au
@@ -255,7 +255,7 @@ Le « chrono » se décline en deux usages complémentaires : la **frise** (une
 seule orthophoto à la fois, idéale pour balayer les époques) et le
 **comparateur** à rideau (deux millésimes confrontés sur la même vue, idéal
 pour mesurer une transformation précise). L'état (mode et millésimes choisis)
-est conservé en `localStorage` afin de ne pas perturber la gestion du *hash*
+est conservé en `localStorage` afin de ne pas perturber la gestion du _hash_
 d'URL propre à leaflet-atlas.
 
 ---

@@ -172,19 +172,30 @@ export function simplifyGeometry(geometry, toleranceDeg) {
   const r = (pts) => pts.map(([x, y]) => [round5(x), round5(y)]);
   switch (geometry.type) {
     case 'LineString':
-      return { type: 'LineString', coordinates: r(douglasPeucker(geometry.coordinates, toleranceDeg)) };
+      return {
+        type: 'LineString',
+        coordinates: r(douglasPeucker(geometry.coordinates, toleranceDeg)),
+      };
     case 'MultiLineString':
       return {
         type: 'MultiLineString',
         coordinates: geometry.coordinates.map((l) => r(douglasPeucker(l, toleranceDeg))),
       };
     case 'Polygon': {
-      const rings = geometry.coordinates.map((ring) => simplifyRing(ring, toleranceDeg)).filter(Boolean).map(r);
+      const rings = geometry.coordinates
+        .map((ring) => simplifyRing(ring, toleranceDeg))
+        .filter(Boolean)
+        .map(r);
       return rings.length ? { type: 'Polygon', coordinates: rings } : null;
     }
     case 'MultiPolygon': {
       const polys = geometry.coordinates
-        .map((poly) => poly.map((ring) => simplifyRing(ring, toleranceDeg)).filter(Boolean).map(r))
+        .map((poly) =>
+          poly
+            .map((ring) => simplifyRing(ring, toleranceDeg))
+            .filter(Boolean)
+            .map(r)
+        )
         .filter((poly) => poly.length);
       return polys.length ? { type: 'MultiPolygon', coordinates: polys } : null;
     }

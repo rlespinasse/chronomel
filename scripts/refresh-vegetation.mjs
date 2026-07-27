@@ -43,7 +43,7 @@ const OUTPUT = resolve(
   '..',
   'public',
   'data',
-  'vegetation.geojson',
+  'vegetation.geojson'
 );
 
 function buildCql() {
@@ -76,12 +76,14 @@ async function main() {
   }
 
   if (features.length === 0) {
-    throw new Error('Aucune zone de végétation récupérée — service WFS indisponible ou filtre modifié ?');
+    throw new Error(
+      'Aucune zone de végétation récupérée — service WFS indisponible ou filtre modifié ?'
+    );
   }
 
   const { count, sizeKo } = await writeCollection(OUTPUT, features);
   console.log(
-    `✓ ${count} espaces verts ≥ 2 ha (${dropped} petites zones écartées, ${sizeKo} Ko) écrits dans ${OUTPUT}`,
+    `✓ ${count} espaces verts ≥ 2 ha (${dropped} petites zones écartées, ${sizeKo} Ko) écrits dans ${OUTPUT}`
   );
 }
 

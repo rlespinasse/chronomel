@@ -2,7 +2,7 @@
 
 Reference for every data source ChronoMEL fetches from, and the script
 that owns it. All sources are French public open data, published under
-either the *Licence Ouverte 2.0 (Etalab)* or the *ODbL*.
+either the _Licence Ouverte 2.0 (Etalab)_ or the _ODbL_.
 
 ## Orthophotographies (WMS)
 

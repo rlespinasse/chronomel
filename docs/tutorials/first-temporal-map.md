@@ -107,11 +107,13 @@ To change colors by year:
 ## Troubleshooting
 
 **Layer doesn't appear?**
+
 - Check browser console (F12) for errors
 - Verify GeoJSON file exists in `public/data/`
 - Run `npm run validate-config`
 
 **Colors look wrong?**
+
 - Ensure fillOpacity is > 0
 - Check geometryTypes: communes should be 'polygon'
 - Verify GeoJSON is valid (use Mapshaper.org to test)

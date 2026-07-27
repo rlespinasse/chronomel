@@ -15,11 +15,13 @@
 Your layer needs to be in GeoJSON format (.geojson or .json).
 
 **Validate your GeoJSON:**
+
 - Use [Mapshaper.org](https://mapshaper.org) to test
 - Check for invalid geometries (self-intersecting, null coords, etc.)
 - For best performance, simplify complex shapes
 
 **Common sources for French data:**
+
 - [data.gouv.fr](https://www.data.gouv.fr) — Official French open data
 - [BD TOPO®](https://geoservices.ign.fr/bdtopo) — IGN geographic database
 - [Wikidata/Overpass API](https://overpass-turbo.osm.org) — OpenStreetMap-based
@@ -156,6 +158,7 @@ npm run validate-config
 ```
 
 This checks:
+
 - GeoJSON files exist and are valid
 - Config references match geometry types
 - Required fields are present
@@ -163,22 +166,26 @@ This checks:
 ## Tips
 
 **Performance:**
+
 - For >10k features, consider splitting into multiple files
 - Simplify geometries (use Mapshaper)
 - Avoid deeply nested properties (flat structure is faster)
 
 **Styling:**
+
 - Use semi-transparent fills (fillOpacity < 1) so layers show through
 - Match the existing color palette
 - Test with both light/dark mode (if applicable)
 
 **Data Refresh:**
+
 - If data changes regularly, use the `scripts/refresh-*.mjs` pattern
 - See [Data Refresh Scripts](../reference/data-sources.md)
 
 ---
 
 See also:
+
 - [Temporal Data Handling](../explanation/temporal-data-handling.md) — Dynamic colors by year
 - [Styling Guide](customize-styling.md) — Advanced color and visual options
 - [Discover Datasets](discover-datasets.md) — Using datagouv MCP to find data

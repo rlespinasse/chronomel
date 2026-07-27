@@ -90,14 +90,16 @@ async function main() {
   }
 
   if (coursFeatures.length === 0 && surfaceFeatures.length === 0) {
-    throw new Error('Aucun objet hydrographique récupéré — service WFS indisponible ou filtre modifié ?');
+    throw new Error(
+      'Aucun objet hydrographique récupéré — service WFS indisponible ou filtre modifié ?'
+    );
   }
 
   const cw = await writeCollection(OUTPUT_COURS, coursFeatures);
   const sw = await writeCollection(OUTPUT_SURFACES, surfaceFeatures);
   console.log(
     `✓ ${cw.count} cours d'eau (${cw.sizeKo} Ko) → ${OUTPUT_COURS}\n` +
-      `✓ ${sw.count} surfaces ≥ 0,5 ha (${sw.sizeKo} Ko, ${droppedSurfaces} petites écartées) → ${OUTPUT_SURFACES}`,
+      `✓ ${sw.count} surfaces ≥ 0,5 ha (${sw.sizeKo} Ko, ${droppedSurfaces} petites écartées) → ${OUTPUT_SURFACES}`
   );
 }
 

@@ -7,6 +7,7 @@ Thank you for helping improve ChronoMEL!
 ### Report a Bug
 
 Open an [issue](https://github.com/rlespinasse/chronomel/issues) with:
+
 - What you were doing
 - What you expected to happen
 - What actually happened
@@ -15,6 +16,7 @@ Open an [issue](https://github.com/rlespinasse/chronomel/issues) with:
 ### Suggest a Feature
 
 Open a [discussion](https://github.com/rlespinasse/chronomel/discussions) or issue describing:
+
 - The use case
 - Why it would be valuable
 - How you envision it working
@@ -22,11 +24,13 @@ Open a [discussion](https://github.com/rlespinasse/chronomel/discussions) or iss
 ### Submit a Fix or Feature
 
 1. **Fork and branch:**
+
    ```bash
    git checkout -b feature/my-feature
    ```
 
 2. **Set up locally:**
+
    ```bash
    npm install
    npm run dev  # Start dev server
@@ -35,6 +39,7 @@ Open a [discussion](https://github.com/rlespinasse/chronomel/discussions) or iss
 3. **Make changes** following the code style (see below)
 
 4. **Test locally:**
+
    ```bash
    npm run dev       # Verify in browser
    npm run build     # Test production build
@@ -43,6 +48,7 @@ Open a [discussion](https://github.com/rlespinasse/chronomel/discussions) or iss
    ```
 
 5. **Commit with clear messages:**
+
    ```bash
    git commit -m "feat: add new temporal layer"
    ```
@@ -72,17 +78,20 @@ Open a [discussion](https://github.com/rlespinasse/chronomel/discussions) or iss
 ### Comments
 
 Only add comments for:
+
 - **Why**, not what (code should be readable)
 - Non-obvious algorithms or workarounds
 - Important invariants
 
 Bad:
+
 ```javascript
 // Increment the counter
 count++;
 ```
 
 Good:
+
 ```javascript
 // Temporal projection: skip buildings not yet built in this year
 if (year < building.annee) continue;
@@ -116,6 +125,7 @@ When modifying `src/config.ts`:
 ### Manual Testing
 
 For UI changes:
+
 1. `npm run dev`
 2. Open http://localhost:5173
 3. Test:
@@ -128,6 +138,7 @@ For UI changes:
 ### Data Validation
 
 For data/config changes:
+
 ```bash
 npm run validate-config  # Check GeoJSON validity
 npm run build           # Test production build

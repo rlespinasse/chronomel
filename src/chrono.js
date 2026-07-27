@@ -62,8 +62,7 @@ export function initChrono(app) {
   //
   // onReady (qui appelle initChrono) se déclenche une fois toutes les couches
   // chargées : l'instance Leaflet est donc disponible via getAllLayerDefs().
-  const batiLayer = () =>
-    app.getAllLayerDefs().find((d) => d.id === 'bati')?._leafletLayer ?? null;
+  const batiLayer = () => app.getAllLayerDefs().find((d) => d.id === 'bati')?._leafletLayer ?? null;
 
   const anneeFor = (id) => parId(id)?.annee ?? null;
 
@@ -123,7 +122,10 @@ export function initChrono(app) {
   }
 
   function setCompareLayer(side, millesime) {
-    trackEvent('event/compare', `Comparateur ${side === 'left' ? 'gauche' : 'droite'} : ${millesime.id}`);
+    trackEvent(
+      'event/compare',
+      `Comparateur ${side === 'left' ? 'gauche' : 'droite'} : ${millesime.id}`
+    );
     const key = side === 'left' ? 'leftId' : 'rightId';
     const oldId = state[key];
     const otherId = side === 'left' ? state.rightId : state.leftId;
@@ -208,7 +210,11 @@ export function initChrono(app) {
     }
     refreshToggleUI();
     saveState(state);
-    if (track) trackEvent(`event/mode/${state.mode}`, state.mode === 'compare' ? 'Mode comparateur' : 'Mode frise');
+    if (track)
+      trackEvent(
+        `event/mode/${state.mode}`,
+        state.mode === 'compare' ? 'Mode comparateur' : 'Mode frise'
+      );
   }
 
   new ModeToggle().addTo(map);

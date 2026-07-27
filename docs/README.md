@@ -40,12 +40,14 @@ Start here:
 The docs are organized by learning style (Diataxis framework):
 
 ### 📚 Tutorials
+
 **Learn by doing** — Step-by-step guides with hands-on examples
 
 - [Quick Start](tutorials/quickstart.md)
 - [First Temporal Map](tutorials/first-temporal-map.md)
 
 ### 🎯 How-To Guides
+
 **Task-focused** — Assume basic knowledge, accomplish specific goals
 
 - [Add a Layer](how-to/add-layer.md)
@@ -55,6 +57,7 @@ The docs are organized by learning style (Diataxis framework):
 - [Discover Datasets](how-to/discover-datasets.md)
 
 ### 💡 Explanation
+
 **Conceptual understanding** — Discuss design choices, trade-offs, how things work
 
 - [Architecture](explanation/architecture.md)
@@ -63,6 +66,7 @@ The docs are organized by learning style (Diataxis framework):
 - [Configuration Patterns](explanation/config-patterns.md)
 
 ### 🔍 Reference
+
 **Look up details** — API schemas, precise information, structured lookup
 
 - [Configuration API](reference/config-api.md)

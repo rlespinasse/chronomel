@@ -94,6 +94,7 @@ npm run refresh-data  # If you have local setup
 **Build fails?**
 
 Check the Actions log:
+
 1. Go to **Actions** tab
 2. Find the failed workflow run
 3. Click to see error output
@@ -119,5 +120,6 @@ Must match your repository name exactly.
 ---
 
 See also:
+
 - [GitHub Pages Docs](https://docs.github.com/en/pages)
 - [CI/CD Configuration](.github/workflows/deploy.yml)

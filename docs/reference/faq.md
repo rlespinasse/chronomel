@@ -53,14 +53,14 @@ reference features. See
 
 ## What keyboard shortcuts are available?
 
-| Key         | Action                                  |
-| ------------- | ------------------------------------------ |
-| `,` / `<`     | Previous millésime (timeline mode only)   |
-| `.` / `>`     | Next millésime (timeline mode only)       |
-| `Home`        | Jump to 1930 (timeline mode only)         |
-| `End`         | Jump to 2025 (timeline mode only)         |
-| `v` / `V`     | Cycle the current year's variants (timeline mode only) |
-| `m` / `M`     | Toggle timeline / compare mode (either mode) |
+| Key       | Action                                                 |
+| --------- | ------------------------------------------------------ |
+| `,` / `<` | Previous millésime (timeline mode only)                |
+| `.` / `>` | Next millésime (timeline mode only)                    |
+| `Home`    | Jump to 1930 (timeline mode only)                      |
+| `End`     | Jump to 2025 (timeline mode only)                      |
+| `v` / `V` | Cycle the current year's variants (timeline mode only) |
+| `m` / `M` | Toggle timeline / compare mode (either mode)           |
 
 These are also listed in the in-app help overlay (`?` icon), injected at
 runtime by `injectHelpRows()` in `src/chrono.js`.

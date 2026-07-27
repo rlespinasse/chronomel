@@ -25,7 +25,7 @@ const EQUIP_LABELS = {
 const escapeHtml = (value) =>
   String(value ?? '').replace(
     /[&<>"]/g,
-    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]
   );
 
 // Configuration de l'application leaflet-atlas.

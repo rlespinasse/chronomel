@@ -20,12 +20,7 @@
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import {
-  fetchBdTopoFeatures,
-  bboxCql,
-  centroid,
-  writeCollection,
-} from './lib/bdtopo.mjs';
+import { fetchBdTopoFeatures, bboxCql, centroid, writeCollection } from './lib/bdtopo.mjs';
 
 // Usages BD TOPO retenus → catégorie ChronoMEL (sert au style des marqueurs).
 const USAGES = {
@@ -48,7 +43,7 @@ const OUTPUT = resolve(
   '..',
   'public',
   'data',
-  'bati-remarquable.geojson',
+  'bati-remarquable.geojson'
 );
 
 /** Catégorie ChronoMEL d'un bâtiment (nature patrimoniale prioritaire). */
@@ -102,7 +97,9 @@ async function main() {
   const { count, sizeKo } = await writeCollection(OUTPUT, features);
   const min = features[0].properties.annee;
   const max = features[features.length - 1].properties.annee;
-  console.log(`✓ ${count} bâtiments remarquables (${min}–${max}, ${sizeKo} Ko) écrits dans ${OUTPUT}`);
+  console.log(
+    `✓ ${count} bâtiments remarquables (${min}–${max}, ${sizeKo} Ko) écrits dans ${OUTPUT}`
+  );
 }
 
 main().catch((err) => {

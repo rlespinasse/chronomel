@@ -18,7 +18,7 @@ const OUTPUT = resolve(
   '..',
   'public',
   'data',
-  'communes-mel.geojson',
+  'communes-mel.geojson'
 );
 
 async function fetchAllFeatures() {

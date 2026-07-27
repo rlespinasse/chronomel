@@ -43,6 +43,7 @@ export const config = {
 ```
 
 leaflet-atlas interprets this config and:
+
 - Loads GeoJSON files
 - Applies styles
 - Creates UI panels (layer list, search, details)
@@ -66,6 +67,7 @@ Static GeoJSON files that don't change by year:
 - `vegetation.geojson` — Green spaces
 
 **Selectively temporal:**
+
 - `bati-remarquable.geojson` — Buildings with `annee` (construction year) property
 - Timeline change → color change based on `annee` vs. selected year
 
@@ -146,6 +148,7 @@ User Action → Event → Handler → Update → Render
 ## Data Flow: GeoJSON Loading
 
 1. **Config defines file references:**
+
    ```typescript
    { id: 'communes', file: 'data/communes-mel.geojson' }
    ```
@@ -169,11 +172,13 @@ User Action → Event → Handler → Update → Render
 Two ways to compare years:
 
 ### Timeline Mode
+
 - Single timeline slider
 - One orthophoto + one year of all other data
 - Scroll to scrub through time
 
 ### Comparison Mode
+
 - Two timelines (left/right)
 - WMS layer split down middle (swipe) or side-by-side
 - Compare specific years
@@ -188,6 +193,7 @@ Switch in `src/chrono.js` via `setMode()`.
 - **Zoom-based loading:** Leaflet handles LOD
 
 Typical load:
+
 - Map + layers: ~2-3 MB GeoJSON
 - Current year orthophoto: 50-100 MB tiles
 - Navigation: Instant (cached tiles)
@@ -205,5 +211,6 @@ To customize behavior:
 ---
 
 See also:
+
 - [Temporal Data Handling](temporal-data-handling.md)
 - [Configuration Patterns](config-patterns.md)

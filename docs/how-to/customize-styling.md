@@ -20,12 +20,12 @@ four CSS custom properties defined in `src/css/app.css`:
 }
 ```
 
-| Variable          | Used for                                              |
-| ----------------- | ------------------------------------------------------ |
-| `--chrono-bg`      | Panel background (timeline, comparator, mode toggle)  |
-| `--chrono-fg`      | Panel text color                                      |
-| `--chrono-accent`  | Active slider thumb, active chip/tab, swipe handle ring |
-| `--chrono-muted`   | Secondary text (kicker labels, detail captions)       |
+| Variable          | Used for                                                |
+| ----------------- | ------------------------------------------------------- |
+| `--chrono-bg`     | Panel background (timeline, comparator, mode toggle)    |
+| `--chrono-fg`     | Panel text color                                        |
+| `--chrono-accent` | Active slider thumb, active chip/tab, swipe handle ring |
+| `--chrono-muted`  | Secondary text (kicker labels, detail captions)         |
 
 To re-theme the UI, override these in `src/css/app.css` — every panel
 picks them up automatically, no JS changes required:

@@ -12,12 +12,7 @@
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import {
-  fetchBdTopoFeatures,
-  bboxCql,
-  simplifyGeometry,
-  writeCollection,
-} from './lib/bdtopo.mjs';
+import { fetchBdTopoFeatures, bboxCql, simplifyGeometry, writeCollection } from './lib/bdtopo.mjs';
 
 // Tolérance de simplification Douglas-Peucker (degrés ; ~0,00004° ≈ 4 m) :
 // fine pour préserver les courbes du métro et du tramway.
@@ -36,7 +31,7 @@ const OUTPUT = resolve(
   '..',
   'public',
   'data',
-  'transport.geojson',
+  'transport.geojson'
 );
 
 function buildCql() {

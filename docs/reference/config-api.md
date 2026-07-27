@@ -113,6 +113,7 @@ geometryTypes: {
 ```
 
 Values:
+
 - `'polygon'` — GeoJSON Polygon/MultiPolygon
 - `'point'` — GeoJSON Point/MultiPoint
 - `'line'` — GeoJSON LineString/MultiLineString
@@ -163,6 +164,7 @@ tooltips: {
 ```
 
 Example:
+
 ```typescript
 communes: (p) => `${p.nom} (${p.code_insee})`,
 bati: (p) => `${p.nature} · ${p.annee}`,
@@ -181,6 +183,7 @@ detailBuilders: () => ({
 **Must be a function returning an object** (lazily evaluated).
 
 Example:
+
 ```typescript
 detailBuilders: () => ({
   communes: (p) => `
@@ -267,7 +270,7 @@ export const config = {
   },
 
   baseLayers: {
-    'OpenStreetMap': {
+    OpenStreetMap: {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
         maxZoom: 19,
@@ -277,15 +280,19 @@ export const config = {
   },
   defaultBaseLayer: 'OpenStreetMap',
 
-  layerGroups: [{
-    group: 'My Data',
-    layers: [{
-      id: 'communes',
-      label: 'Communes',
-      file: 'data/communes.geojson',
-      active: true,
-    }],
-  }],
+  layerGroups: [
+    {
+      group: 'My Data',
+      layers: [
+        {
+          id: 'communes',
+          label: 'Communes',
+          file: 'data/communes.geojson',
+          active: true,
+        },
+      ],
+    },
+  ],
 
   geometryTypes: {
     communes: 'polygon',
@@ -316,5 +323,6 @@ export const config = {
 ---
 
 See also:
+
 - [Add a Layer](../how-to/add-layer.md)
 - [Customize Styling](../how-to/customize-styling.md)
