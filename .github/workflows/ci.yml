@@ -28,5 +28,11 @@ jobs:
       - name: Analyse statique (ESLint)
         run: npm run lint
 
+      - name: Validation de la configuration
+        run: npm run validate-config
+
+      - name: Validation des liens de documentation
+        run: npm run validate-docs
+
       - name: Construction du site
         run: npm run build
