@@ -23,7 +23,8 @@ const EQUIP_LABELS: Record<string, string> = {
 const escapeHtml = (value?: string | number | null): string =>
   String(value ?? '').replace(
     /[&<>"]/g,
-    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c as keyof Record<string, string>],
+    (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c as keyof Record<string, string>]
   );
 
 export const config = {
@@ -264,6 +265,37 @@ export const config = {
 
   legalPages: [
     {
+      id: 'about',
+      label: 'À propos',
+      content: `
+        <h2>À propos</h2>
+        <p>
+          ChronoMEL est une visionneuse cartographique temporelle qui montre l'évolution du
+          bâti et du territoire de la Métropole Européenne de Lille (MEL) de 1930 à 2025, à
+          partir des orthophotographies aériennes successives.
+        </p>
+        <h3>Contenu visualisé</h3>
+        <ul>
+          <li>Limites administratives des communes de la MEL</li>
+          <li>Bâti remarquable (religieux, sportif, industriel) daté, avec projection temporelle</li>
+          <li>
+            Contexte territorial&nbsp;: réseau ferré (métro, tramway, voie ferrée), hydrographie,
+            espaces verts et équipements structurants
+          </li>
+        </ul>
+        <h3>Comparateur à rideau</h3>
+        <p>
+          Un curseur permet de comparer côte à côte deux millésimes d'orthophotographies et
+          d'observer directement les transformations urbaines survenues entre deux dates.
+        </p>
+        <h3>Mise à jour des données</h3>
+        <p>
+          Les jeux de données sont régénérés automatiquement chaque mois, le 1er du mois, à
+          partir des sources ouvertes listées dans l'onglet «&nbsp;Données &amp;
+          licences&nbsp;».
+        </p>`,
+    },
+    {
       id: 'mentions',
       label: 'Mentions légales',
       content: `
@@ -322,6 +354,12 @@ export const config = {
           Réalisée avec <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>
           et <a href="https://github.com/rlespinasse/leaflet-atlas" target="_blank" rel="noopener">leaflet-atlas</a>
           (comparateur à rideau intégré).
+        </p>
+        <h3>Fréquence de mise à jour</h3>
+        <p>
+          Toutes les couches ci-dessus sont régénérées automatiquement chaque mois, le
+          1er du mois à 06h00 UTC, par un pipeline de traitement qui interroge les
+          services WMS/OGC des producteurs de données.
         </p>`,
     },
     {
@@ -347,6 +385,28 @@ export const config = {
           (GeoServer de la MEL, tuiles OpenStreetMap) susceptibles de journaliser votre
           adresse IP selon leurs propres politiques de confidentialité.
         </p>`,
+    },
+    {
+      id: 'credits',
+      label: 'Crédits',
+      content: `
+        <h2>Crédits</h2>
+        <h3>Technologies</h3>
+        <ul>
+          <li><a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> — cartographie interactive</li>
+          <li><a href="https://github.com/rlespinasse/leaflet-atlas" target="_blank" rel="noopener">leaflet-atlas</a> — framework de configuration cartographique (recherche, panneaux, comparateur à rideau, analytics)</li>
+          <li><a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> — build et serveur de développement</li>
+          <li><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a> — typage statique de la configuration</li>
+        </ul>
+        <h3>Données</h3>
+        <p>Voir l'onglet «&nbsp;Données &amp; licences&nbsp;» pour le détail des sources et de leurs licences.</p>
+        <h3>Code source</h3>
+        <p>
+          <a href="https://github.com/rlespinasse/chronomel" target="_blank" rel="noopener">github.com/rlespinasse/chronomel</a>
+          — distribué sous licence MIT.
+        </p>
+        <h3>Auteur</h3>
+        <p>Romain Lespinasse</p>`,
     },
   ],
 
