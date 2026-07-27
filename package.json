@@ -21,6 +21,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "validate-config": "node scripts/validate-config.mjs",
     "validate-all": "npm run validate-config && npm run build",
     "refresh-data": "node scripts/refresh-data.mjs",
@@ -37,7 +40,11 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.7.0",
+    "eslint-plugin-prettier": "^5.5.6",
     "globals": "^17.7.0",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0",
     "vite": "^8.1.5"
   }
 }
