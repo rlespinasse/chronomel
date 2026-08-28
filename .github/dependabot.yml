@@ -4,10 +4,19 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: build
+      include: scope
+    open-pull-requests-limit: 10
     groups:
       npm-dependencies:
         patterns:
           - '*'
+        update-types:
+          - minor
+          - patch
     ignore:
       - dependency-name: 'typescript'
         update-types: ['version-update:semver-major']
@@ -16,7 +25,15 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: build
+      include: scope
     groups:
       github-actions:
         patterns:
           - '*'
+        update-types:
+          - minor
+          - patch
