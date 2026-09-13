@@ -9,6 +9,7 @@
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchJsonWithRetry } from './lib/http.mjs';
 
 const BASE =
   'https://data.lillemetropole.fr/geoserver/ogc/features/v1/collections/mel_limite_administrative:mel_comm_orga/items';
@@ -26,11 +27,10 @@ async function fetchAllFeatures() {
   let url = `${BASE}?f=application/json&limit=1000`;
 
   while (url) {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Échec de la requête (${res.status}) : ${url}`);
-    }
-    const page = await res.json();
+    const page = await fetchJsonWithRetry(
+      url,
+      (status) => `Échec de la requête (${status}) : ${url}`
+    );
     features.push(...(page.features ?? []));
 
     const next = (page.links ?? []).find((l) => l.rel === 'next');
