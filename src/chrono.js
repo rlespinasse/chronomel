@@ -288,8 +288,8 @@ function injectHelpRows() {
   const table = document.querySelector('.help-overlay .help-card table');
   if (!table) return;
   const rows = [
-    ['<', 'Millésime précédent'],
-    ['>', 'Millésime suivant'],
+    [',', 'Millésime précédent'],
+    ['.', 'Millésime suivant'],
     ['Début', 'Premier millésime (1930)'],
     ['Fin', 'Dernier millésime (2025)'],
     ['V', 'Variante suivante de l’année'],
