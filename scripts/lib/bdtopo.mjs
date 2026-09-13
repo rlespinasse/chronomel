@@ -7,6 +7,7 @@
 
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
+import { fetchJsonWithRetry } from './http.mjs';
 
 const WFS = 'https://data.geopf.fr/wfs/ows';
 
@@ -54,11 +55,10 @@ export async function fetchBdTopoFeatures({ typename, cql, properties }) {
 
   for (;;) {
     const url = buildUrl({ typename, cql, properties, startIndex });
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Échec de la requête WFS (${res.status}) sur ${typename}`);
-    }
-    const page = await res.json();
+    const page = await fetchJsonWithRetry(
+      url,
+      (status) => `Échec de la requête WFS (${status}) sur ${typename}`
+    );
     const batch = page.features ?? [];
     features.push(...batch);
 
