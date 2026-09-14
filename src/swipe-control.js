@@ -3,7 +3,7 @@ import L from 'leaflet';
 // Rideau de comparaison « maison » (sans dépendance tierce).
 //
 // Deux couches sont superposées sur la carte ; un séparateur vertical
-// déplaçable découpe (CSS `clip`) chaque couche pour n'en montrer qu'une moitié.
+// déplaçable découpe (CSS `clip-path`) chaque couche pour n'en montrer qu'une moitié.
 // Technique classique reposant sur `containerPointToLayerPoint` pour rester
 // aligné lors des déplacements/zooms de la carte.
 //
@@ -47,7 +47,7 @@ export class SwipeCurtain {
     return this;
   }
 
-  /** Retire le rideau et restaure les couches (clip annulé). */
+  /** Retire le rideau et restaure les couches (clip-path annulé). */
   remove() {
     this._clearClip(this._left);
     this._clearClip(this._right);
@@ -65,7 +65,7 @@ export class SwipeCurtain {
 
   _clearClip(layer) {
     const c = layer && layer.getContainer && layer.getContainer();
-    if (c) c.style.clip = '';
+    if (c) c.style.clipPath = '';
   }
 
   _update() {
@@ -77,12 +77,12 @@ export class SwipeCurtain {
 
     this._divider.style.left = `${dividerPx}px`;
 
-    const leftRect = `rect(${nw.y}px, ${clipX}px, ${se.y}px, ${nw.x}px)`;
-    const rightRect = `rect(${nw.y}px, ${se.x}px, ${se.y}px, ${clipX}px)`;
+    const leftPoly = `polygon(${nw.x}px ${nw.y}px, ${clipX}px ${nw.y}px, ${clipX}px ${se.y}px, ${nw.x}px ${se.y}px)`;
+    const rightPoly = `polygon(${clipX}px ${nw.y}px, ${se.x}px ${nw.y}px, ${se.x}px ${se.y}px, ${clipX}px ${se.y}px)`;
     const lc = this._left && this._left.getContainer && this._left.getContainer();
     const rc = this._right && this._right.getContainer && this._right.getContainer();
-    if (lc) lc.style.clip = leftRect;
-    if (rc) rc.style.clip = rightRect;
+    if (lc) lc.style.clipPath = leftPoly;
+    if (rc) rc.style.clipPath = rightPoly;
   }
 
   _disableMapDrag() {
